@@ -140,15 +140,3 @@ identical either way — only the connection target changes. `mongomock` and
 `montydb` are listed in `requirements.txt` purely as this dev/test
 convenience; they're not needed for the real deployment, though there's no
 harm leaving them installed.
-
-## Notes for the write-up / defense
-- `price_naira`, `beds`, `baths` are the **cleaned** numeric fields;
-  `price_raw` / `beds_raw` / `baths_raw` keep the original text
-  for reference.
-- `price_scaled` / `beds_scaled` are the `StandardScaler` output fields —
-  useful if you extend this into the ML price-prediction bonus feature.
-- Re-running the fetch/scraper is safe — `source_url` is a unique index,
-  so repeat runs upsert instead of duplicating documents.
-- Bonus features from the assignment (login, PDF export, ML prediction,
-  live deployment, API integration) aren't built yet — this covers the
-  base 70-mark technical layer end to end.
