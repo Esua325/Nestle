@@ -1,0 +1,12 @@
+Flask>=3.0
+pandas>=2.2
+scikit-learn>=1.5
+pymongo>=4.17
+beautifulsoup4>=4.12
+requests>=2.32
+matplotlib>=3.9
+python-dotenv>=1.0
+
+# Dev/sandbox-only convenience — lets the pipeline run without a real
+# MongoDB installed (see USE_MOCK_DB in .env). Not needed in production.
+montydb>=2.5

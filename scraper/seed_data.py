@@ -1,0 +1,108 @@
+"""
+One-time seed so the pipeline (clean -> visualize -> Flask dashboard) has
+real data to work with while you run scrape.py against the live site in
+your own environment. These 20 rows are actual current listings from
+nigeriapropertycentre.com/for-rent/houses.
+
+Run once: python3 scraper/seed_data.py
+"""
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from database.db import insert_listings
+
+SEED_ROWS = [
+    dict(title="Exclusive 4 Bedroom with BQ & Bush Bar", location="Durumi, Abuja",
+         price_raw="N25,000,000 /yr", beds_raw="4 Beds", baths_raw="6 Baths",
+         property_type="Detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3603605"),
+    dict(title="Tastefully Finished 4 Bedroom En-Suite Townhouse with 1 Room BQ", location="Lekki Phase 1, Lekki, Lagos",
+         price_raw="N40,000,000 /yr", beds_raw="4 Beds", baths_raw="4 Baths",
+         property_type="Terraced duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3607019"),
+    dict(title="3 Bedroom Apartment", location="Ikoyi, Lagos",
+         price_raw="N35,000,000 /yr", beds_raw="3 Beds", baths_raw="4 Baths",
+         property_type="House for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3616755"),
+    dict(title="3 Bedroom with 2 Room and Gatehouse", location="Lavista Estate, Galadimawa, Abuja",
+         price_raw="N8,500,000 /yr", beds_raw="3 Beds", baths_raw="5 Baths",
+         property_type="Detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3616678"),
+    dict(title="4 Bedroom Semi-Detached Duplex with BQ", location="Ikate Elegushi, Lekki, Lagos",
+         price_raw="N18,000,000 /yr", beds_raw="4 Beds", baths_raw="5 Baths",
+         property_type="Semi-detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617139"),
+    dict(title="Spacious 6 Bedroom Detached Duplex with Guest Chalet", location="Old Ikoyi, Ikoyi, Lagos",
+         price_raw="N180,000,000 /yr", beds_raw="6 Beds", baths_raw="10 Baths",
+         property_type="Detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3590767"),
+    dict(title="Luxury 3 Bedroom Terrace Duplex with a Room BQ", location="Banana Island, Ikoyi, Lagos",
+         price_raw="N50,000,000 /yr", beds_raw="3 Beds", baths_raw="3 Baths",
+         property_type="Terraced duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3599762"),
+    dict(title="Serviced 4 Bedroom Terrace Duplex", location="Orchid Road, Lekki, Lagos",
+         price_raw="N12,000,000 /yr", beds_raw="4 Beds", baths_raw="5 Baths",
+         property_type="Terraced duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617301"),
+    dict(title="5 Bedroom House", location="Off NNPC Road Ikoyi, Ikoyi, Lagos",
+         price_raw="N110,000,000 /yr", beds_raw="5 Beds", baths_raw="5 Baths",
+         property_type="Detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617284"),
+    dict(title="4 Bedroom Semi Detached House with BQ", location="Igbo Efon, Lekki, Lagos",
+         price_raw="N10,000,000 /yr", beds_raw="4 Beds", baths_raw="4 Baths",
+         property_type="Semi-detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617280"),
+    dict(title="4 Bedrooms House", location="Off Alfred Renwande, Ikoyi, Lagos",
+         price_raw="N110,000,000 /yr", beds_raw="4 Beds", baths_raw="4 Baths",
+         property_type="Detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617281"),
+    dict(title="4 Bedrooms Terraced Duplex", location="Ikate, Lekki, Lagos",
+         price_raw="N17,000,000 /yr", beds_raw="4 Beds", baths_raw="4 Baths",
+         property_type="Terraced duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3230896"),
+    dict(title="Brand New 4 Bedroom", location="Parkview Estate, Ikoyi, Lagos",
+         price_raw="N50,000,000 /yr", beds_raw="4 Beds", baths_raw="4 Baths",
+         property_type="Semi-detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617274"),
+    dict(title="4 Bedroom Terrace Duplex with BQ", location="Wuye Main, Wuye, Abuja",
+         price_raw="N15,000,000 /yr", beds_raw="4 Beds", baths_raw="5 Baths",
+         property_type="Terraced duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617262"),
+    dict(title="Luxurious Spacious Brand New 3 Bedroom Apartment with BQ", location="Oniru VI, Lekki, Lagos",
+         price_raw="N10,500,000 /yr", beds_raw="3 Beds", baths_raw="3 Baths",
+         property_type="Terraced duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617258"),
+    dict(title="Brand New Exotic 4-Bedroom Duplex", location="Ikota, Lekki, Lagos",
+         price_raw="N9,000,000 /yr", beds_raw="4 Beds", baths_raw="4 Baths",
+         property_type="Detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3581265"),
+    dict(title="4-Bedroom Detached Duplex", location="Femi Okunnu, Osapa, Lekki, Lagos",
+         price_raw="N16,000,000 /yr", beds_raw="4 Beds", baths_raw="4 Baths",
+         property_type="Detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3595115"),
+    dict(title="Luxury 4 Bedroom Terrace with Pent, BQ, Fitted Kitchen", location="Lekki Phase 1, Lekki, Lagos",
+         price_raw="N27,000,000 /yr", beds_raw="4 Beds", baths_raw="4 Baths",
+         property_type="Terraced duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617248"),
+    dict(title="5 Bedroom House", location="Banana Island Road, Ikoyi, Lagos",
+         price_raw="N40,000,000 /yr", beds_raw="5 Beds", baths_raw="5 Baths",
+         property_type="Terraced duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617247"),
+    dict(title="A 4 Bedroom Detached House All Room Ensuite with a BQ", location="Northern Foreshore, Lekki, Lagos",
+         price_raw="N15,000,000 /yr", beds_raw="4 Beds", baths_raw="4 Baths",
+         property_type="Detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3572668"),
+    dict(title="Standard 4 Bedroom Duplex", location="LBS Ajah, Ajah, Lagos",
+         price_raw="N6,000,000 /yr", beds_raw="4 Beds", baths_raw="4 Baths",
+         property_type="Semi-detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617243"),
+    dict(title="4 Bedroom with 2 Room and Gatehouse", location="Asokoro District, Abuja",
+         price_raw="N45,000,000 /yr", beds_raw="6 Beds", baths_raw="7 Baths",
+         property_type="Detached duplex for rent",
+         source_url="https://nigeriapropertycentre.com/listing/3617999"),
+]
+
+if __name__ == "__main__":
+    inserted = insert_listings(SEED_ROWS)
+    print(f"Seeded {inserted} rows into MongoDB.")

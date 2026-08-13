@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+*.pyc
+.env
+.monty_data/
+static/charts/*.png
